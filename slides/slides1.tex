@@ -23,11 +23,11 @@
 \begin{frame}{Introduktion}
   Hvad er \LaTeX\ og hvorfor er det nødvendigt at kende til som matematik studerende?
   \begin{itemize}
-  \item<1-> \LaTeX Er et typografisk system som blandt andet er særligt velegnet til at skrive matematiske formler.
-  \item<2-> Det er IKKE et WYSIWYG program ligesom Microsoft Word etc.
-  \item<3-> Tekst og formler skrives i et `kode-sprog` som først bliver `kompileret` hvorefter der dannes en pdf med resultatet.
-  \item<4-> Man kan inkludere ekstra `pakker` (\texttt{\textbackslash usepackage \{pakke-navn \}}) i et \LaTeX dokument med flere funktionaliteter (med pakken \texttt{tikz} kan man generere flotte figurer).
-  \item<5-> Det kræver tilvænning at skrive i \LaTeX; i starten vil man opleve `kompilerings-fejl` og man skal derfor `debugge` sit dokument.
+  \item \LaTeX Er et typografisk system som blandt andet er særligt velegnet til at skrive matematiske formler.
+  \item Det er IKKE et WYSIWYG program ligesom Microsoft Word etc.
+  \item Tekst og formler skrives i et `kode-sprog` som først bliver `kompileret` hvorefter der dannes en pdf med resultatet.
+  \item Man kan inkludere ekstra `pakker` (\texttt{\textbackslash usepackage \{pakke-navn \}}) i et \LaTeX dokument med flere funktionaliteter (med pakken \texttt{tikz} kan man generere flotte figurer).
+  \item Det kræver tilvænning at skrive i \LaTeX; i starten vil man opleve `kompilerings-fejl` og man skal derfor `debugge` sit dokument.
   \end{itemize}
 \end{frame}
 
@@ -53,11 +53,76 @@
   \end{block}
 \end{frame}
 
-\section{Mapper og Filer}
-\begin{frame}{Mapper og Filer}
-  Det er vigtigt, at have en mappestruktur på sin computer.
-
+\section{Mappestruktur og Filtyper}
+\begin{frame}[fragile]{Mappestruktur og Filtyper}{Mappestruktur}
+  Det er en god ide, at have en mappestruktur på sin computer.
+\begin{tikzpicture}%
+  \draw[color=black!60!white]
+  \FTdir(\FTroot,root,Documents){       % root: parent = \FTroot
+    \FTdir(root,AAU,AAU){       % normal dir: (parentID, currentID, label)
+      \FTdir(AAU,semester1,semester1){
+        \FTdir(semester1,P0,P0) {
+          % \FTfile(P0,...)
+        }
+        \FTdir(semester1,P1,P1) {
+          % \FTfile(P1,...)
+        }
+        \FTdir(semester1,LIAL,LIAL) {
+          % \FTfile(LIAL,...)
+        }
+        \FTdir(semester1,intro,\LaTeX-intro) {
+          % \FTfile(intro,...)
+        }
+      }
+      \FTdir(AAU,semester2,semester2){
+        \FTdir(semester2,P2,P2) {
+          % \FTfile(P2,...)
+        }
+        \FTdir(semester2,CALC,CALC) {
+          % \FTfile(CALC,...)
+        }
+      }
+    }
+  };
+\end{tikzpicture}
 \end{frame}
+
+\begin{frame}{Mappestruktur og Filtyper}{Filtyper}
+  Der findes mange forskellige filtyper og det er en fordel at have hørt om de mest almindelige.
+
+  \begin{block}{}
+    \begin{tabular}{ll}
+  \texttt{.txt}  & Plain tekst \\
+  \texttt{.docx} & Microsoft Word \\
+  \texttt{.csv}  & Microsoft Excel \\
+  \texttt{.pdf}  & Adobes dokumentformat \\
+  \texttt{.jpeg} & Billedformat \\
+  \texttt{.png}  & Billedformat \\
+  \texttt{.html} & Hjemmesideformat \\
+  \texttt{.zip}  & Arkivfil \\
+  \texttt{.tex}  & \LaTeX-fil \\
+  \texttt{.bib}  & Bibliografifil (hørende til \LaTeX)
+  \end{tabular}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Mappestruktur og Filtyper}{.zip filer}
+  Hvis man har brug for, at dele mange mapper og filer med andre kan det være en god ide at komprimere disse til en enkelt \texttt{.zip}.
+  \begin{block}{Windows}
+    I Windows kan man markere de filer og mapper man vil komprimere, derefter højreklikke og trykke
+    \begin{itemize}
+    \item \texttt{Send til} $\to$ \texttt{Kromprimeret (zip) mappe}.
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{macOS}
+    I macOS skal man markere de filer og mapper man vil komprimere, derefter højreklikke og trykke
+    \begin{itemize}
+    \item \texttt{Kromprimer}.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
 
 % \section{Introduction}
 % % motivation for creating this theme
