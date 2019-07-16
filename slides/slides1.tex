@@ -1,87 +1,24 @@
 \documentclass[10pt]{beamer}
-\usetheme[
-%%% options passed to the outer theme
-%    progressstyle=movCircCnt,   %either fixedCircCnt, movCircCnt, or corner
-%    rotationcw,          % change the rotation direction from counter-clockwise to clockwise
-%    shownavsym          % show the navigation symbols
-  ]{AAUsimple}
-  
-% If you want to change the colors of the various elements in the theme, edit and uncomment the following lines
-% Change the bar and sidebar colors:
-%\setbeamercolor{AAUsimple}{fg=red!20,bg=red}
-%\setbeamercolor{sidebar}{bg=red!20}
-% Change the color of the structural elements:
-% \setbeamercolor{structure}{fg=red}
-% Change the frame title text color:
-%\setbeamercolor{frametitle}{fg=blue}
-% Change the normal text color background:
-%\setbeamercolor{normal text}{fg=black,bg=gray!10}
-% ... and you can of course change a lot more - see the beamer user manual.
+\input{preamble}
 
-\usepackage[utf8]{inputenc}
-\usepackage[danish]{babel}
-\usepackage[T1]{fontenc}
-% Or whatever. Note that the encoding and the font should match. If T1
-% does not look nice, try deleting the line with the fontenc.
-\usepackage{helvet}
-
-% colored hyperlinks
-\newcommand{\chref}[2]{%
-  \href{#1}{{\usebeamercolor[bg]{AAUsimple}#2}}%
-}
-
-\title{Introduktion Til \LaTeX}
-
-\subtitle{Mapper og Filer}  % could also be a conference name
-
+\title{Introduktion til \LaTeX}
+\subtitle{Workshop 1}
 \date{\today}
 
-\author{
-  %
-}
-
-% - Give the names in the same order as they appear in the paper.
-% - Use the \inst{?} command only if the authors have different
-%   affiliation. See the beamer manual for an example
-
-\institute[
-%  {\includegraphics[scale=0.2]{aau_segl}}\\ %insert a company, department or university logo
-  Institut for Matematiske Fag\\
-  Aalborg Universitet\\
-  Danmark
-] % optional - is placed in the bottom of the sidebar on every slide
-{% is placed on the bottom of the title page
-  Institut for Matematiske Fag\\
-  Aalborg Universitet\\
-  Danmark
-  
-  %there must be an empty line above this line - otherwise some unwanted space is added between the university and the country (I do not know why;( )
-}
-
-% specify a logo on the titlepage (you can specify additional logos an include them in 
-% institute command below
-\pgfdeclareimage[height=1.5cm]{titlepagelogo}{AAUgraphics/aau_logo_new} % placed on the title page
-%\pgfdeclareimage[height=1.5cm]{titlepagelogo2}{AAUgraphics/aau_logo_new} % placed on the title page
-\titlegraphic{% is placed on the bottom of the title page
-  \pgfuseimage{titlepagelogo}
-%  \hspace{1cm}\pgfuseimage{titlepagelogo2}
-}
-
 \begin{document}
-% the titlepage
-{\aauwavesbg%
-\begin{frame}[plain,noframenumbering] % the plain option removes the header from the title page
+
+% Title page
+{\aauwavesbg
+  \begin{frame}[plain,noframenumbering]
   \titlepage
 \end{frame}}
-%%%%%%%%%%%%%%%%
 
-% TOC
+% Table of contents
 \begin{frame}{Agenda}{}
 \tableofcontents
 \end{frame}
-%%%%%%%%%%%%%%%%
 
-
+% Main content
 \section{Introduktion}
 \begin{frame}{Introduktion}
   Hvad er \LaTeX\ og hvorfor er det nødvendigt at kende til som matematik studerende?
@@ -129,8 +66,8 @@
 %   \begin{itemize}
 %     \item<1-> During the last couple of years, I have shared the beamer themes named \chref{http://kom.aau.dk/~jkn/latex/latex.php\#beamer_aausidebar}{AAU Sidebar} and \chref{http://kom.aau.dk/~jkn/latex/latex.php\#beamer_aalborg}{Aalborg} on my website \chref{http://kom.aau.dk/~jkn}{http://kom.aau.dk/\textasciitilde jkn}.
 %     \item<2-> Both of these themes feature a sidebar in which the table of content and progress are shown.
-%     \item<3-> Some people (in particular one - Yes, I am looking at you, Mads) have been asking about an AAU beamer theme without a sidebar. The present theme named \alert{AAU Simple} is precisely that. 
-%     \item<4-> Like the \chref{http://kom.aau.dk/~jkn/latex/latex.php\#beamer_aausidebar}{AAU Sidebar} theme, the theme is not really useful to people not affiliated with AAU due to the tight integration between the theme and the round AAU logo. However, everyone is of course encouraged to download and modify the theme according to their own needs. 
+%     \item<3-> Some people (in particular one - Yes, I am looking at you, Mads) have been asking about an AAU beamer theme without a sidebar. The present theme named \alert{AAU Simple} is precisely that.
+%     \item<4-> Like the \chref{http://kom.aau.dk/~jkn/latex/latex.php\#beamer_aausidebar}{AAU Sidebar} theme, the theme is not really useful to people not affiliated with AAU due to the tight integration between the theme and the round AAU logo. However, everyone is of course encouraged to download and modify the theme according to their own needs.
 %   \end{itemize}
 % \end{block}
 % \end{frame}
@@ -163,3 +100,8 @@
 %%%%%%%%%%%%%%%%
 
 \end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
