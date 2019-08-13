@@ -1,0 +1,96 @@
+\documentclass[10pt]{beamer}
+\input{preamble}
+
+\title{Projekt Strukturering og Litteratur}
+\subtitle{Workshop 2}
+\date{\today}
+
+\begin{document}
+
+% Title page
+{\aauwavesbg
+  \begin{frame}[plain,noframenumbering]
+  \titlepage
+\end{frame}}
+
+% Table of contents
+\begin{frame}{Agenda}{}
+\tableofcontents
+\end{frame}
+
+% Her lærer man an opdele sit projekt og bruge kommandoen \\include (Som minimum vil man nok lave en seperat fil til hvert kapitel). Derudover dannes filen preamble.tex, hvori man kan inludere relevante pakker. Tanken er, at de ikke nødvendigvis skal have en "køreklar" skabelon, men at vi opbygger en sådan i takt med workshoppen. Den vil i sidste ende stadig være minimal og de skal derfor "lære at søge på Google" når der behøver nye pakker og features.
+
+% Fejlmeddelelser: Eksempler på de meste gængse (man har glemt en "slut bracket", et dollar tegn, et backslash osv. osv.) En øvelse kunne være, at man fik udleveret en .tex fil hvori vi har indlagt klokke klar fejl. Nu gælder det så om enten at læse fejlmeddelelsen eller bruge "udkommenterings-metoden" indtil det igen kompilerer.
+
+% Litteratur og bibtex: Her gives kommandoer til indsættelse i preamblen, men de skal selv danne file litteratur.bib og en øvelse kunne være at finde calculus bogen på Google Scholar og indsætte denne.
+
+% Vi anbefaler ikke:
+%  - "følgende er baseret på [3]"
+%  - referencer til bøger bør som minimum inkludere kapitel nummer.
+%  - \\cite vs \\citep 
+
+
+% Main content
+
+\section{Opdelin af Projekt Filer}
+\begin{frame}[fragile]{Opdel Projekt Filer}
+  \begin{tikzpicture}%
+  \draw[color=black!60!white]
+  \FTdir(\FTroot,root,P1){       % root: parent = \FTroot
+    \FTfile(root,master.tex)
+    \FTfile(root,master.pdf)
+    \FTdir(root,incl,incl){       % normal dir: (parentID, currentID, label)
+      \FTdir(incl,fig,fig) {
+        \FTfile(fig,orienteret\textunderscore graf.pdf)
+      }
+      \FTdir(incl,form,form) {
+        \FTfile(form,forord.tex)
+        \FTfile(form,introduktion.tex)
+      }
+      \FTdir(incl,kap,kap) {
+        \FTfile(kap,kapitel\textunderscore 1.tex)
+      }
+      \FTdir(incl,tab,tab) {
+        \FTfile(tab,opsummerings\textunderscore tabel.tex)
+      }
+      \FTdir(incl,app,app) {
+        \FTfile(app,appendiks\textunderscore A.tex)
+      }
+    }
+  };
+\end{tikzpicture}
+\end{frame}
+
+
+\section{Inkluder Filer i Masteren}
+\begin{frame}[fragile]{Opdel Projekt Filer}
+  \begin{block}{master.tex}
+\begin{verbatim}
+  \documentclass[10pt, danish]{article}
+  \begin{document}
+  \include{incl/form/forord}
+  \include{incl/form/introduktion}
+  \include{incl/kap/kapitel_1}
+  \include{incl/kap/kapitel_2}
+  \include{incl/app/appendiks_A}
+  \end{document}
+\end{verbatim}
+  \end{block}
+
+  \begin{block}{kapitel\textunderscore 1.tex}
+\begin{verbatim}
+\chapter{Kapitel 1}
+Dette kapitel omhandler...
+\input{incl/tab/opsummerings_tabel.tex}
+\end{verbatim}
+  \end{block}
+  
+\end{frame}
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
