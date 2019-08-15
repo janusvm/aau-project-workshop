@@ -1,7 +1,7 @@
 \documentclass[10pt]{beamer}
 \input{preamble}
 
-\title{Projekt Strukturering og Litteratur}
+\title{Projekt Strukturering}
 \subtitle{Workshop 2}
 \date{\today}
 
@@ -18,22 +18,10 @@
 \tableofcontents
 \end{frame}
 
-% Her lærer man an opdele sit projekt og bruge kommandoen \\include (Som minimum vil man nok lave en seperat fil til hvert kapitel). Derudover dannes filen preamble.tex, hvori man kan inludere relevante pakker. Tanken er, at de ikke nødvendigvis skal have en "køreklar" skabelon, men at vi opbygger en sådan i takt med workshoppen. Den vil i sidste ende stadig være minimal og de skal derfor "lære at søge på Google" når der behøver nye pakker og features.
-
-% Fejlmeddelelser: Eksempler på de meste gængse (man har glemt en "slut bracket", et dollar tegn, et backslash osv. osv.) En øvelse kunne være, at man fik udleveret en .tex fil hvori vi har indlagt klokke klar fejl. Nu gælder det så om enten at læse fejlmeddelelsen eller bruge "udkommenterings-metoden" indtil det igen kompilerer.
-
-% Litteratur og bibtex: Her gives kommandoer til indsættelse i preamblen, men de skal selv danne file litteratur.bib og en øvelse kunne være at finde calculus bogen på Google Scholar og indsætte denne.
-
-% Vi anbefaler ikke:
-%  - "følgende er baseret på [3]"
-%  - referencer til bøger bør som minimum inkludere kapitel nummer.
-%  - \\cite vs \\citep 
-
-
 % Main content
 
-\section{Opdelin af Projekt Filer}
-\begin{frame}[fragile]{Opdel Projekt Filer}
+\section{Opdeling af Projekt Filer}
+\begin{frame}[fragile]{Opdeling Projekt Filer}{Mappe struktur}
   \begin{tikzpicture}%
   \draw[color=black!60!white]
   \FTdir(\FTroot,root,P1){       % root: parent = \FTroot
@@ -62,16 +50,15 @@
 \end{frame}
 
 
-\section{Inkluder Filer i Masteren}
-\begin{frame}[fragile]{Opdel Projekt Filer}
+
+\begin{frame}[fragile]{Opdeling af Projekt Filer}{Inkluder Filer i Masteren}
   \begin{block}{master.tex}
 \begin{verbatim}
-  \documentclass[10pt, danish]{article}
+  \documentclass[10pt]{report}
   \begin{document}
   \include{incl/form/forord}
   \include{incl/form/introduktion}
   \include{incl/kap/kapitel_1}
-  \include{incl/kap/kapitel_2}
   \include{incl/app/appendiks_A}
   \end{document}
 \end{verbatim}
@@ -84,9 +71,96 @@ Dette kapitel omhandler...
 \input{incl/tab/opsummerings_tabel.tex}
 \end{verbatim}
   \end{block}
-  
 \end{frame}
 
+\begin{frame}[fragile]{Opdeling af Projekt Filer}{Preamble}
+  % \begin{itemize}
+  % \item Ekstra-pakker giver flere funktionaliteter of kommandoer.
+  % \item Inkluder sådanne pakkker i en selvstænig \texttt{preamble.tex} fil.
+  % \end{itemize}
+  \begin{block}{preamble.tex}
+\begin{verbatim}
+\documentclass[10pt]{report}             % Type mm.
+\usepackage[utf8]{inputenc}              % DK bogstaver ind
+\usepackage[T1]{fontenc}                 % DK bogstaver ud
+\usepackage[danish]{babel}               % DK formattering
+\includepackage{amssymb, mathtools}      % Matematik
+\includepackage{graphicx}                % \includegraphics
+\end{verbatim}
+  \end{block}
+    \begin{block}{master.tex}
+\begin{verbatim}
+\include{preable.tex}
+\begin{document}
+...
+\end{document}
+\end{verbatim}
+  \end{block}
+\end{frame}
+
+\section{Fejlmeddelelser}
+\begin{frame}[fragile]{Fejlmeddelelser}{Typer}
+  \begin{itemize}
+  \item \LaTeX giver fejl hvis en kommando er skrevet forkert
+  \item Det sker \textbf{hele tiden for os alle}
+  \item Man skal derfor vide hvordan man retter fejl
+  \item En fejlmeddelelse starter altid med et udråbstegn
+  \item Brug Google - andre har helt sikkert haft den samme fejl
+  \end{itemize}
+
+\begin{verbatim}
+! Too many }'s.
+l.6 \frac 1}{2}
+
+! Undefined control sequence.
+l.6 \dtae
+
+! Missing $ inserted
+\end{verbatim}  
+\end{frame}
+
+\begin{frame}[fragile]{Fejlmeddelelser}{Strategi}
+  \begin{itemize}
+  \item Mange fejl kan fanges ved at compile ofte
+  \item Nogle gange ved man ikke hvor i dokumentet fejlen er
+  \item Brug evt. udelukkelses metoden her - udkommenter indtil det virker igen
+  \end{itemize}
+\end{frame}
+
+\section{Floats og Andre Blokmiljøer}
+
+\begin{frame}{Floats og Andre Blokmiljøer}{TBA}
+  Tabeller,
+  Figurer,
+  Lister
+\end{frame}
+
+\section{Opgaver}
+\begin{frame}[fragile]{Opgaver}{Opgave 1}
+  \begin{itemize}
+  \item Lav en mappe struktur tilsvarende nedenstående
+  \item Udfyld de fire \texttt{.tex} filer med relevant indhold.
+  \item Brug jeres favorit værktøj til at plotte ifb. med \texttt{taylor\textunderscore graf.pdf}
+  \end{itemize}
+  \begin{tikzpicture}%
+  \draw[color=black!60!white]
+  \FTdir(\FTroot,root,opgave){       % root: parent = \FTroot
+    \FTfile(root,master.tex)
+    \FTfile(root,master.pdf)
+    \FTdir(root,incl,incl){       % normal dir: (parentID, currentID, label)
+      \FTdir(incl,fig,fig) {
+        \FTfile(fig,taylor\textunderscore graf.pdf)
+      }
+      \FTdir(incl,kap,kap) {
+        \FTfile(kap,taylor.tex)
+      }
+      \FTdir(incl,tab,tab) {
+        \FTfile(tab,taylor\textunderscore tabel.tex)
+      }
+    }
+  };
+\end{tikzpicture}
+\end{frame}
 
 \end{document}
 
