@@ -34,7 +34,7 @@
 \begin{frame}[fragile]{Introduktion}{Hello World!}
   \begin{block}{master.tex}
 \begin{verbatim}
-  \documentclass[10pt, danish]{article}
+  \documentclass[10pt]{article}
   \begin{document}
   Hello World! I present to you Eulers identity:
   \begin{equation}
@@ -123,48 +123,6 @@
   \end{block}
 \end{frame}
 
-
-% \section{Introduction}
-% % motivation for creating this theme
-% \begin{frame}{Introduction}{}
-% \begin{block}{Why the AAU Simple beamer theme?}
-%   \begin{itemize}
-%     \item<1-> During the last couple of years, I have shared the beamer themes named \chref{http://kom.aau.dk/~jkn/latex/latex.php\#beamer_aausidebar}{AAU Sidebar} and \chref{http://kom.aau.dk/~jkn/latex/latex.php\#beamer_aalborg}{Aalborg} on my website \chref{http://kom.aau.dk/~jkn}{http://kom.aau.dk/\textasciitilde jkn}.
-%     \item<2-> Both of these themes feature a sidebar in which the table of content and progress are shown.
-%     \item<3-> Some people (in particular one - Yes, I am looking at you, Mads) have been asking about an AAU beamer theme without a sidebar. The present theme named \alert{AAU Simple} is precisely that.
-%     \item<4-> Like the \chref{http://kom.aau.dk/~jkn/latex/latex.php\#beamer_aausidebar}{AAU Sidebar} theme, the theme is not really useful to people not affiliated with AAU due to the tight integration between the theme and the round AAU logo. However, everyone is of course encouraged to download and modify the theme according to their own needs.
-%   \end{itemize}
-% \end{block}
-% \end{frame}
-%%%%%%%%%%%%%%%%
-
-
-% \subsection{Modifying the theme}
-% % how to modify the theme
-% {\setbeamercolor{AAUsimple}{fg=gray!50,bg=orange!50}
-%  \setbeamercolor{structure}{fg=red}
-%  \setbeamercolor{frametitle}{use=structure,fg=structure.fg}
-%  \setbeamercolor{normal text}{bg=gray!20}
-% \begin{frame}{User Interface}{Modifying the Theme}
-%   \begin{itemize}
-%     \item<1-> The default configuration of fonts, colors, and layout complies with the \chref{http://aau.designguiden.dk}{AAU design guidelines} and is the \alert{official} version of the theme.
-%     \item<2-> However, you can modify specific elements of the theme through the templates provided by the beamer class. Please refer to the beamer user manual for instructions.
-%     \item<3-> For example, on this slide the following commands have been used
-%       \begin{itemize}
-%         \item Change the header colours:\\
-%         {\tt \textbackslash setbeamercolor\{AAUsimple\}\{fg=blue!20,bg=red!50\}}
-%         \item Change the color of the structural elements:\\
-%         {\tt \textbackslash setbeamercolor\{structure\}\{fg=black\}}\\
-%         \item Change the frame title text color:
-%         {\tt \textbackslash setbeamercolor\{frametitle\}\{use=structure, fg=structure.fg\}}
-%         \item Change the background color of the text
-%         {\tt \textbackslash setbeamercolor\{normal text\}\{bg=gray!20\}}
-%       \end{itemize}
-%   \end{itemize}
-% \end{frame}}
-%%%%%%%%%%%%%%%%
-
-
 \section{TeXMaker}
 
 \begin{frame}
@@ -194,6 +152,95 @@
     \end{itemize}
   \end{block}
 \end{frame}
+
+\section{Must Know \LaTeX \ \ Kommandoer}
+
+\begin{frame}{Must Know \LaTeX \ Kommandoer}{Specielle karakterer}
+  \begin{table}[h]
+    \centering
+    \begin{tabular}[h]{llll}
+      \textbf{Tegn}             & \textbf{Beskrivelse} & \textbf{Eksempel} & \textbf{Resultat}\\ \hline \\[2pt]
+      \texttt{\textbackslash}   & begynd kommando      & \texttt{\textbackslash LaTeX}              & \LaTeX        \\[4pt]
+      \texttt{\{ \}}            & omkrans argumenter   & \texttt{\textbackslash textbf\{fed\}\}}    & \textbf{fed}  \\[4pt]
+      \texttt{\%}               & kommentar tegn       & \texttt{\% Fix}                            & \% Fix        \\[4pt]
+      \texttt{\$ \$}            & inline matematik     & \texttt{\$\textbackslash frac\{1\}\{2\}\$} & $\frac{1}{2}$ \\[4pt]
+      \texttt{\_}               & subscript            & \texttt{\$x\_i\$}                          & $x_i$         \\[4pt]
+      \texttt{\textasciicircum} & superscript          & \texttt{\$x\textasciicircum 2\$}           & $x^2$
+    \end{tabular}
+  \end{table}
+\end{frame}
+
+\begin{frame}[fragile]{Must Know \LaTeX \ Kommandoer}{Blokmiljøer}
+  Et blokmiljøe (engelsk: environment) udfører en handling på en blok af kommandoer i modsætning til eksempelvis inline matematik ved brug af \$ \$.
+  \begin{block}{Form}
+\begin{verbatim}
+  \begin{miljø}
+  ...
+  ...
+  \end{miljø}
+\end{verbatim}
+  \end{block}
+\end{frame}
+
+\section{Matematik Specifikt}
+
+\begin{frame}[fragile,label = mustknow]{Matematik Specifikt}
+  \begin{block}{Blokmiljøer}
+\begin{verbatim}
+ \begin{equation} ... \end{equation}
+ \begin{align}    ... \end{align}
+ \begin{pmatrix}  ... \end{pmatrix}
+ \begin{cases}    ... \end{cases}
+\end{verbatim}
+\end{block}
+
+\begin{block}{Andet}
+\begin{verbatim}
+ \sum_{i = 1}^{n} x_i
+ \prod_{i \in \mathcal{I}}p(i)
+ \int_{\infty}^{infty} f(x)dx
+ \frac{d}{dx}f(x)
+\end{verbatim}
+\end{block}
+
+Se også: \href{https://en.wikibooks.org/wiki/LaTeX/Mathematics}{Wiki - Mathematics}
+\end{frame}
+
+\section{Opgaver}
+
+\begin{frame}[fragile]{Opgaver}{Opgave 1}
+  \begin{itemize}
+  \item Lave en AAU mappestruktur
+  \item Dan en undermappe \texttt{latex-p0}
+  \item Opret filen \texttt{hello\textunderscore world.tex}
+  \item Skriv følgende i filen og compiler dokumentet
+  \end{itemize}
+
+  \begin{block}{hello\textunderscore world.tex}
+\begin{verbatim}
+  \documentclass[10pt]{article}
+  \begin{document}
+   Hello World! I Like Mathematics!
+  \end{document}
+\end{verbatim}
+  \end{block}  
+
+\end{frame}
+
+\begin{frame}[fragile]{Opgaver}{Opgave 2}
+  \begin{itemize}
+  \item Brug linket på slide \ref{mustknow} til at genskabe nedenstående
+  \end{itemize}
+  \begin{block}{}
+    \begin{align*} 
+      \pi          &= \frac{O}{D} \\
+      e^{i\pi} + 1 &= 0           \\
+      \frac{\partial^2 u}{\partial t^2} & = c^2 \nabla^2 u \\
+      P_k(x) &= \sum_{i=1}^{k} \frac{f^{(k)}(a)}{k!}(x - a)^k
+    \end{align*}
+  \end{block}
+\end{frame}
+
 
 \end{document}
 
