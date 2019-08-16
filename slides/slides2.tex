@@ -209,8 +209,8 @@ l.6 \dtae
 \end{table}
 \end{column}
 \end{columns}  
-
 \end{frame}
+
 
 \begin{frame}[fragile]{Floats og Andre Blokmiljøer}{Andre Blokmiljøer}
 
@@ -253,6 +253,43 @@ l.6 \dtae
   \end{column}
 \end{columns}  
 \end{frame}
+
+\begin{frame}[fragile]{Floats og Andre Blokmiljøer}{Krydsreference}
+\begin{columns}
+  \begin{column}{0.6\textwidth}
+    \begin{verbatim}
+\section{Krydsreferencer} 
+\label{krydsrefs}
+
+Se table \ref{tab:taylor_lnx}
+og figur \ref{fig:taylor}.
+
+Betragt følgende 
+\begin{equation} \label{eq:1}
+\sum_{k=0}^{n} k = \frac{n(n+1)^2}{2}
+\end{equation}
+ 
+Ligning \eqref{eq:1} blev opdaget
+af Gauss i 1800 tallet.
+\end{verbatim}
+  \end{column}
+  \begin{column}{0.4\textwidth}
+    Se tabel \ref{tab:taylor_lnx}
+    og figur \ref{fig:taylor}.
+    
+    \vspace{25pt}
+
+    Betragt følgende 
+    \begin{equation} \label{eq:1}
+      \sum_{k=0}^{n} k = \frac{n(n+1)^2}{2}
+    \end{equation}
+ 
+    Ligning \eqref{eq:1} blev opdaget
+    af Gauss i 1800 tallet.
+\end{column}
+\end{columns}  
+\end{frame}
+
   
 \section{Opgaver}
 

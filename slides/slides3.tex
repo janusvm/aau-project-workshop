@@ -1,0 +1,121 @@
+\documentclass[10pt]{beamer}
+\input{preamble}
+
+\title{Bibliografi og \LaTeX \ Præsentationer med Beamer}
+\subtitle{Workshop 3}
+\date{\today}
+
+\begin{document}
+
+% Title page
+{\aauwavesbg
+  \begin{frame}[plain,noframenumbering]
+  \titlepage
+\end{frame}}
+
+% Table of contents
+\begin{frame}{Agenda}{}
+\tableofcontents
+\end{frame}
+
+% Main content
+
+\section{BibTeX}
+
+\begin{frame}[fragile]{BibTeX}{\texttt{.bib} fil}
+  \begin{itemize}
+  \item BibTeX er et modul til \LaTeX \ til brug af kildehenvisning
+  \item Alle kilder findes i en enkelt \texttt{.bib} fil
+  \item Let at referere fra alle steder i dokumentet
+  \end{itemize}
+
+  \begin{block}{incl/bib/kilder.bib}
+\begin{verbatim}
+@Book{calc,
+  author    = {C. Henry Edwards and David E. Penney},
+  title     = {Calculus: Early Transcendentals},
+  publisher = {Pearson},
+  year      = {2014},
+  edition   = {7th}
+}
+\end{verbatim}
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{BibTeX}{Henvisninger}
+
+  \begin{block}{master.tex}
+\begin{verbatim}
+\begin{document}
+ 
+\include{preamble.tex}
+\include{incl/form/forord.tex}
+\include{incl/form/introduktion.tex}
+....
+\bibliographystyle{apalike}
+\bibliography{incl/bib/kilder.bib}
+\end{document}
+\end{verbatim}
+  \end{block}
+
+  Vi kan nu referere til calculus bogen ved at skrive
+  \begin{itemize}
+  \item \texttt{\textbackslash cite\{calc\}} eller \texttt{\textbackslash cite[sidetal]\{calc\}}
+  \item \texttt{\textbackslash citep\{calc\}} eller \texttt{\textbackslash citep[sidetal]\{calc\}}
+  \end{itemize}
+  
+\end{frame}
+ 
+
+\section{Beamer Præsentationer}
+
+\begin{frame}[fragile]{Beamer Præsentationer}{Introduktion}
+
+  \begin{block}{presentation.tex}
+\begin{verbatim}
+\documentclass[10pt]{beamer}
+
+\title{En Catchy Titel}
+\subtitle{En ligeså fed undertitel}
+\date{\today}
+\begin{document}
+
+\\frame{\titlepage}
+
+\section{Introduktion}
+
+\\begin{frame}{Introduktion}{Definitioner}
+Her defineres centrale koncepter.
+\\end{frame}
+
+\end{verbatim}
+  \end{block}
+  
+\end{frame}
+
+\section{Opgaver}
+
+\begin{frame}{Opgaver}{Opgave 1-4}
+  \begin{itemize}
+  \item Brug Google Scholar til at finde BibTeX kode til at referere til `Discrete Mathematics and Its Applications` af Kenneth H. Rosen.
+  \item Lav en beamer præsentation og undersøg hvordan man kan ændre temaet for præsentationen.
+  \item Unersøg hvordan man kan inkludere et frame med en `Agenda`.
+  \item Lav en \texttt{preamble.tex} fil og indsæt relevant indhold. Indsæt specielt den pakke der gør det muligt at producere følgende. (Hint: Se tidligere slides)
+    \[
+      \mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} \subset \mathbb{C}
+    \]
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Opgaver}{Opgave 5}
+  \begin{itemize}
+  \item Man kan indsætte såkaldte `blokke` i en beamer frame; undersøg hvordan og prøv det af.
+  \end{itemize}
+\end{frame}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
