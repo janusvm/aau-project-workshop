@@ -21,7 +21,8 @@
 % Main content
 
 \section{Opdeling af Projekt Filer}
-\begin{frame}[fragile]{Opdeling Projekt Filer}{Mappe struktur}
+
+\begin{frame}[fragile]{Opdeling Projekt Filer}{Mappe Struktur}
   \begin{tikzpicture}%
   \draw[color=black!60!white]
   \FTdir(\FTroot,root,P1){       % root: parent = \FTroot
@@ -49,8 +50,6 @@
 \end{tikzpicture}
 \end{frame}
 
-
-
 \begin{frame}[fragile]{Opdeling af Projekt Filer}{Inkluder Filer i Masteren}
   \begin{block}{master.tex}
 \begin{verbatim}
@@ -74,10 +73,6 @@ Dette kapitel omhandler...
 \end{frame}
 
 \begin{frame}[fragile]{Opdeling af Projekt Filer}{Preamble}
-  % \begin{itemize}
-  % \item Ekstra-pakker giver flere funktionaliteter of kommandoer.
-  % \item Inkluder sådanne pakkker i en selvstænig \texttt{preamble.tex} fil.
-  % \end{itemize}
   \begin{block}{preamble.tex}
 \begin{verbatim}
 \documentclass[10pt]{report}             % Type mm.
@@ -99,6 +94,7 @@ Dette kapitel omhandler...
 \end{frame}
 
 \section{Fejlmeddelelser}
+
 \begin{frame}[fragile]{Fejlmeddelelser}{Typer}
   \begin{itemize}
   \item \LaTeX giver fejl hvis en kommando er skrevet forkert
@@ -129,18 +125,143 @@ l.6 \dtae
 
 \section{Floats og Andre Blokmiljøer}
 
-\begin{frame}{Floats og Andre Blokmiljøer}{TBA}
-  Tabeller,
-  Figurer,
-  Lister
+\begin{frame}{Floats og Andre Blokmiljøer}{Floats}
+
+  \begin{block}{Floats}
+    \begin{itemize}
+  \item Floats bruges til indhold som ikke må brydes over flere sider
+  \item De kan indeholde captions til at beskrive indholdet
+  \item En caption \textbf{SKAL} kunne forklare indholdet uden man behøver læse brødteksten
+  \item De er nummererede og man kan henvise til dem i brødteksten 
+  \end{itemize}
+  \end{block}
+
+  \begin{block}{Typiske Floats}
+    \begin{itemize}
+    \item Figurer
+    \item Tabeller
+    \end{itemize}
+  \end{block}
 \end{frame}
 
+\begin{frame}[fragile]{Floats og Andre Blokmiljøer}{Figurer}
+
+\begin{columns}
+  \begin{column}{0.6\textwidth}
+    \begin{verbatim}
+\begin{figure}[h] % options: h, t, b
+ \centering
+ \includegraphics{sti-til/taylor.pdf}
+ \caption{Taylor.}
+ \label{fig:taylor}
+\end{figure}
+\end{verbatim}
+  \end{column}
+  \begin{column}{0.4\textwidth}
+\begin{figure}[h] % options: h, t, b
+ \centering
+ \includegraphics[scale=0.25]{img/taylor.pdf}
+ \caption{Taylor approksimation af $f(x) = \log(x)$.}
+ \label{fig:taylor}
+\end{figure} 
+  \end{column}
+\end{columns}
+
+
+  
+\end{frame}
+
+
+\begin{frame}[fragile]{Floats og Andre Blokmiljøer}{Tabeller}
+
+\begin{columns}
+  \begin{column}{0.6\textwidth}
+    \begin{verbatim}
+\begin{table}[h]
+ \begin{center}
+   \begin{tabular}{c|c|c}
+    $n$ & $f^{(n)}(x)$ & $f^{(n)}(0)$\\
+    \hline
+    1 & $\log(x)$        & 0  \\[2pt]
+    2 & $\frac{1}{x}$    & 1  \\[2pt]
+    3 & $-\frac{1}{x^2}$ & -1 \\[2pt]
+    \hline
+   \end{tabular}
+ \end{center}
+ \caption{Taylor}
+ \label{tab:taylor_lnx}
+\end{table}
+\end{verbatim}
+  \end{column}
+  \begin{column}{0.4\textwidth}
+  \begin{table}[h]
+  \begin{center}
+    \begin{tabular}{c|c|c}
+     $n$ & $f^{(n)}(x)$     & $f^{(n)}(0)$\\\hline
+     1   & $\log(x)$        & 0           \\[2pt]
+     2   & $\frac{1}{x}$    & 1           \\[2pt]
+     3   & $-\frac{1}{x^2}$ & -1          \\[2pt]
+      \hline
+    \end{tabular}
+  \end{center}
+  \caption{Evaluering af $f$ og de afledte i $a=1$.}
+  \label{tab:taylor_lnx}
+\end{table}
+\end{column}
+\end{columns}  
+
+\end{frame}
+
+\begin{frame}[fragile]{Floats og Andre Blokmiljøer}{Andre Blokmiljøer}
+
+\begin{columns}
+  \begin{column}{0.6\textwidth}
+  \begin{block}{Ikke-ordnede lister}
+\begin{verbatim}
+\begin{itemize}
+ \item $\alpha$
+ \item $\beta$
+ \item $\zeta$
+\end{itemize}
+\end{verbatim}
+  \end{block}
+  \begin{block}{Ordnede lister}
+\begin{verbatim}
+\begin{enumerate}
+ \item $\delta$
+ \item $\epsilon$
+ \item $\phi$
+\end{enumerate}
+\end{verbatim}
+  \end{block}
+  \end{column}
+  \begin{column}{0.4\textwidth}
+  \begin{block}{}
+\begin{itemize}
+ \item $\alpha$
+ \item $\beta$
+ \item $\zeta$
+\end{itemize}
+  \end{block}
+  \begin{block}{}
+\begin{enumerate}
+ \item $\delta$
+ \item $\epsilon$
+ \item $\phi$
+\end{enumerate}
+  \end{block}
+  \end{column}
+\end{columns}  
+\end{frame}
+  
 \section{Opgaver}
+
 \begin{frame}[fragile]{Opgaver}{Opgave 1}
   \begin{itemize}
   \item Lav en mappe struktur tilsvarende nedenstående
-  \item Udfyld de fire \texttt{.tex} filer med relevant indhold.
-  \item Brug jeres favorit værktøj til at plotte ifb. med \texttt{taylor\textunderscore graf.pdf}
+  \item Udfyld de fire \texttt{.tex} filer med relevant indhold
+  \item Download filen \texttt{taylor\textunderscore graf.pdf}
+  \item Inkluder \texttt{taylor\textunderscore graf.pdf} i \texttt{taylor\textunderscore tabel.tex}
   \end{itemize}
   \begin{tikzpicture}%
   \draw[color=black!60!white]
