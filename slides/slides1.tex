@@ -46,45 +46,33 @@
   \end{block}
   \begin{block}{master.pdf}
     Hello World! I present to you Eulers identity:
-  \begin{equation}
-  \label{eq:eulers_identity}
-  e^{i\pi} + 1 = 0.
-\end{equation}
+    \begin{equation}
+      \label{eq:eulers_identity}
+      e^{i\pi} + 1 = 0.
+    \end{equation}
   \end{block}
 \end{frame}
 
 \section{Mappestruktur og Filtyper}
 \begin{frame}[containsverbatim]{Mappestruktur og Filtyper}{Mappestruktur}
-  Det er en god ide, at have en mappestruktur på sin computer.
-\begin{tikzpicture}%
-  \draw[color=black!60!white]
-  \FTdir(\FTroot,root,Documents){       % root: parent = \FTroot
-    \FTdir(root,AAU,AAU){       % normal dir: (parentID, currentID, label)
-      \FTdir(AAU,semester1,semester1){
-        \FTdir(semester1,P0,P0) {
-          % \FTfile(P0,...)
+  Det er en god ide at have en ordnet mappestruktur på sin computer.
+  \begin{tikzpicture}
+    \draw[color=black!60!white]
+    \FTdir(\FTroot,root,Documents){
+      \FTdir(root,AAU,AAU){
+        \FTdir(AAU,semester1,semester1){
+          \FTdir(semester1,P0,P0) {}
+          \FTdir(semester1,P1,P1) {}
+          \FTdir(semester1,LIAL,LIAL) {}
+          \FTdir(semester1,intro,\LaTeX-intro) {}
         }
-        \FTdir(semester1,P1,P1) {
-          % \FTfile(P1,...)
-        }
-        \FTdir(semester1,LIAL,LIAL) {
-          % \FTfile(LIAL,...)
-        }
-        \FTdir(semester1,intro,\LaTeX-intro) {
-          % \FTfile(intro,...)
+        \FTdir(AAU,semester2,semester2){
+          \FTdir(semester2,P2,P2) {}
+          \FTdir(semester2,CALC,CALC) {}
         }
       }
-      \FTdir(AAU,semester2,semester2){
-        \FTdir(semester2,P2,P2) {
-          % \FTfile(P2,...)
-        }
-        \FTdir(semester2,CALC,CALC) {
-          % \FTfile(CALC,...)
-        }
-      }
-    }
-  };
-\end{tikzpicture}
+    };
+  \end{tikzpicture}
 \end{frame}
 
 \begin{frame}{Mappestruktur og Filtyper}{Filtyper}
