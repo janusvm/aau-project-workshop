@@ -3,7 +3,7 @@
 
 \title{Projekt Strukturering}
 \subtitle{Workshop 2}
-\date{\today}
+\date{5. september 2019}
 
 \begin{document}
 
@@ -20,34 +20,48 @@
 
 % Main content
 
-\section{Opdeling af Projekt Filer}
+\section{Opdeling af Projektfiler}
 
-\begin{frame}[containsverbatim]{Opdeling Projekt Filer}{Mappe Struktur}
-  \begin{tikzpicture}%
-  \draw[color=black!60!white]
-  \FTdir(\FTroot,root,P1){       % root: parent = \FTroot
-    \FTfile(root,master.tex)
-    \FTfile(root,master.pdf)
-    \FTdir(root,incl,incl){       % normal dir: (parentID, currentID, label)
-      \FTdir(incl,fig,fig) {
-        \FTfile(fig,orienteret\textunderscore graf.pdf)
-      }
-      \FTdir(incl,form,form) {
-        \FTfile(form,forord.tex)
-        \FTfile(form,introduktion.tex)
-      }
-      \FTdir(incl,kap,kap) {
-        \FTfile(kap,kapitel\textunderscore 1.tex)
-      }
-      \FTdir(incl,tab,tab) {
-        \FTfile(tab,opsummerings\textunderscore tabel.tex)
-      }
-      \FTdir(incl,app,app) {
-        \FTfile(app,appendiks\textunderscore A.tex)
-      }
-    }
-  };
-\end{tikzpicture}
+\begin{frame}[containsverbatim]{Opdeling Projektfiler}{Mappestruktur}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{tikzpicture}
+        \draw[color=black!60!white]
+        \FTdir(\FTroot,root,P1){
+          \FTfile(root,master.tex)
+          \FTfile(root,master.pdf)
+          \FTdir(root,incl,incl){
+            \FTdir(incl,main,main) {
+              \FTfile(main,graph\_theory.tex)
+            }
+            \FTdir(incl,misc,misc) {
+              \FTfile(misc,preface.tex)
+              \FTfile(misc,introduction.tex)
+            }
+            \FTdir(incl,app,app) {
+              \FTfile(app,notation.tex)
+            }
+          }
+          \FTdir(root,fig,fig) {
+            \FTdir(fig,img,img){
+              \FTfile(img,digraph.pdf)
+            }
+            \FTdir(fig,tab,tab) {
+              \FTfile(tab,summary\_table.tex)
+            }
+          }
+        };
+      \end{tikzpicture}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{block}{}
+        Eksempel på dele af en mappestruktur for et P1-projekt.
+      \end{block}
+      \begin{block}{}
+        Forskellige typer af indhold ligger i forskellige undermapper.
+      \end{block}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \begin{frame}[containsverbatim]{Opdeling af Projekt Filer}{Inkluder Filer i Masteren}
@@ -112,7 +126,7 @@ l.6 \frac 1}{2}
 l.6 \dtae
 
 ! Missing $ inserted
-\end{verbatim}  
+\end{verbatim}
 \end{frame}
 
 \begin{frame}[containsverbatim]{Fejlmeddelelser}{Strategi}
@@ -132,7 +146,7 @@ l.6 \dtae
   \item Floats bruges til indhold som ikke må brydes over flere sider
   \item De kan indeholde captions til at beskrive indholdet
   \item En caption \textbf{SKAL} kunne forklare indholdet uden man behøver læse brødteksten
-  \item De er nummererede og man kan henvise til dem i brødteksten 
+  \item De er nummererede og man kan henvise til dem i brødteksten
   \end{itemize}
   \end{block}
 
@@ -163,12 +177,12 @@ l.6 \dtae
  \includegraphics[scale=0.25]{img/taylor.pdf}
  \caption{Taylor approksimation af $f(x) = \log(x)$.}
  \label{fig:taylor}
-\end{figure} 
+\end{figure}
   \end{column}
 \end{columns}
 
 
-  
+
 \end{frame}
 
 
@@ -208,7 +222,7 @@ l.6 \dtae
   \label{tab:taylor_lnx}
 \end{table}
 \end{column}
-\end{columns}  
+\end{columns}
 \end{frame}
 
 
@@ -251,24 +265,24 @@ l.6 \dtae
 \end{enumerate}
   \end{block}
   \end{column}
-\end{columns}  
+\end{columns}
 \end{frame}
 
 \begin{frame}[containsverbatim]{Floats og Andre Blokmiljøer}{Krydsreference}
 \begin{columns}
   \begin{column}{0.6\textwidth}
     \begin{verbatim}
-\section{Krydsreferencer} 
+\section{Krydsreferencer}
 \label{krydsrefs}
 
 Se table \ref{tab:taylor_lnx}
 og figur \ref{fig:taylor}.
 
-Betragt følgende 
+Betragt følgende
 \begin{equation} \label{eq:1}
 \sum_{k=0}^{n} k = \frac{n(n+1)^2}{2}
 \end{equation}
- 
+
 Ligning \eqref{eq:1} blev opdaget
 af Gauss i 1800 tallet.
 \end{verbatim}
@@ -276,21 +290,21 @@ af Gauss i 1800 tallet.
   \begin{column}{0.4\textwidth}
     Se tabel \ref{tab:taylor_lnx}
     og figur \ref{fig:taylor}.
-    
+
     \vspace{25pt}
 
-    Betragt følgende 
+    Betragt følgende
     \begin{equation} \label{eq:1}
       \sum_{k=0}^{n} k = \frac{n(n+1)^2}{2}
     \end{equation}
- 
+
     Ligning \eqref{eq:1} blev opdaget
     af Gauss i 1800 tallet.
 \end{column}
-\end{columns}  
+\end{columns}
 \end{frame}
 
-  
+
 \section{Opgaver}
 
 \begin{frame}[containsverbatim]{Opgaver}{Opgave 1}

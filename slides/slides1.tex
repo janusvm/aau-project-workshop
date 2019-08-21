@@ -3,7 +3,7 @@
 
 \title{Introduktion til \LaTeX}
 \subtitle{Workshop 1}
-\date{\today}
+\date{4. september 2019}
 
 \begin{document}
 
@@ -21,13 +21,13 @@
 % Main content
 \section{Introduktion}
 \begin{frame}{Introduktion}
-  Hvad er \LaTeX\ og hvorfor er det nødvendigt at kende til som matematik studerende?
+  Hvad er \LaTeX, og hvorfor er det nødvendigt at kende til som matematikstuderende?
   \begin{itemize}
-  \item \LaTeX Er et typografisk system som blandt andet er særligt velegnet til at skrive matematiske formler.
+  \item \LaTeX er et typografisk system som blandt andet er særligt velegnet til at skrive matematiske formler.
   \item Det er IKKE et WYSIWYG program ligesom Microsoft Word etc.
-  \item Tekst og formler skrives i et `kode-sprog` som først bliver `kompileret` hvorefter der dannes en pdf med resultatet.
-  \item Man kan inkludere ekstra `pakker` (\texttt{\textbackslash usepackage \{pakke-navn \}}) i et \LaTeX dokument med flere funktionaliteter (med pakken \texttt{tikz} kan man generere flotte figurer).
-  \item Det kræver tilvænning at skrive i \LaTeX; i starten vil man opleve `kompilerings-fejl` og man skal derfor `debugge` sit dokument.
+  \item Tekst og formler skrives i et kodesprog som først bliver \emph{kompileret}, hvorefter der dannes en pdf med resultatet.
+  \item Ekstra funktionalitet kan tilføjes med \emph{pakker}, og man kan skrive sine egne kommandoer/funktioner
+  \item Det kræver tilvænning at skrive i \LaTeX; fejl i ens kode vil medføre \emph{kompileringsfejl}, som skal rettes for at en pdf kan dannes.
   \end{itemize}
 \end{frame}
 
@@ -46,45 +46,33 @@
   \end{block}
   \begin{block}{master.pdf}
     Hello World! I present to you Eulers identity:
-  \begin{equation}
-  \label{eq:eulers_identity}
-  e^{i\pi} + 1 = 0.
-\end{equation}
+    \begin{equation}
+      \label{eq:eulers_identity}
+      e^{i\pi} + 1 = 0.
+    \end{equation}
   \end{block}
 \end{frame}
 
 \section{Mappestruktur og Filtyper}
-\begin{frame}[containsverbatim]{Mappestruktur og Filtyper}{Mappestruktur}
-  Det er en god ide, at have en mappestruktur på sin computer.
-\begin{tikzpicture}%
-  \draw[color=black!60!white]
-  \FTdir(\FTroot,root,Documents){       % root: parent = \FTroot
-    \FTdir(root,AAU,AAU){       % normal dir: (parentID, currentID, label)
-      \FTdir(AAU,semester1,semester1){
-        \FTdir(semester1,P0,P0) {
-          % \FTfile(P0,...)
+\begin{frame}[containsverbatim,label=dirs]{Mappestruktur og Filtyper}{Mappestruktur}
+  Det er en god ide at have en ordnet mappestruktur på sin computer.
+  \begin{tikzpicture}
+    \draw[color=black!60!white]
+    \FTdir(\FTroot,root,Documents){
+      \FTdir(root,AAU,AAU){
+        \FTdir(AAU,semester1,semester1){
+          \FTdir(semester1,P0,P0) {}
+          \FTdir(semester1,P1,P1) {}
+          \FTdir(semester1,LIAL,LIAL) {}
+          \FTdir(semester1,intro,\LaTeX-intro) {}
         }
-        \FTdir(semester1,P1,P1) {
-          % \FTfile(P1,...)
-        }
-        \FTdir(semester1,LIAL,LIAL) {
-          % \FTfile(LIAL,...)
-        }
-        \FTdir(semester1,intro,\LaTeX-intro) {
-          % \FTfile(intro,...)
+        \FTdir(AAU,semester2,semester2){
+          \FTdir(semester2,P2,P2) {}
+          \FTdir(semester2,CALC,CALC) {}
         }
       }
-      \FTdir(AAU,semester2,semester2){
-        \FTdir(semester2,P2,P2) {
-          % \FTfile(P2,...)
-        }
-        \FTdir(semester2,CALC,CALC) {
-          % \FTfile(CALC,...)
-        }
-      }
-    }
-  };
-\end{tikzpicture}
+    };
+  \end{tikzpicture}
 \end{frame}
 
 \begin{frame}{Mappestruktur og Filtyper}{Filtyper}
@@ -92,33 +80,40 @@
 
   \begin{block}{}
     \begin{tabular}{ll}
-  \texttt{.txt}  & Plain tekst \\
-  \texttt{.docx} & Microsoft Word \\
-  \texttt{.csv}  & Microsoft Excel \\
-  \texttt{.pdf}  & Adobes dokumentformat \\
-  \texttt{.jpeg} & Billedformat \\
-  \texttt{.png}  & Billedformat \\
-  \texttt{.html} & Hjemmesideformat \\
-  \texttt{.zip}  & Arkivfil \\
-  \texttt{.tex}  & \LaTeX-fil \\
-  \texttt{.bib}  & Bibliografifil (hørende til \LaTeX)
-  \end{tabular}
+      \texttt{.txt}  & Plain tekst \\
+      \texttt{.docx} & Microsoft Word \\
+      \texttt{.csv}  & ``Comma Separated Values''; tabel-data \\
+      \texttt{.pdf}  & ``Portable Document Format''; read-only dokumentformat \\
+      \texttt{.jpeg} & Billedformat \\
+      \texttt{.png}  & Billedformat \\
+      \texttt{.html} & Hjemmesideformat \\
+      \texttt{.zip}  & Arkivfil \\
+      \texttt{.tex}  & \LaTeX-fil \\
+      \texttt{.bib}  & Bibliografifil (hørende til \LaTeX)
+    \end{tabular}
   \end{block}
 \end{frame}
 
-\begin{frame}{Mappestruktur og Filtyper}{.zip filer}
-  Hvis man har brug for, at dele mange mapper og filer med andre kan det være en god ide at komprimere disse til en enkelt \texttt{.zip}.
+\begin{frame}{Mappestruktur og Filtyper}{.zip-filer}
+  Hvis man har brug for at dele mange mapper og filer med andre kan det være en god ide at komprimere disse til en enkelt \texttt{.zip}-fil.
   \begin{block}{Windows}
-    I Windows kan man markere de filer og mapper man vil komprimere, derefter højreklikke og trykke
+    Marker filer og mapper, derefter højreklik og tryk
     \begin{itemize}
     \item \texttt{Send til} $\to$ \texttt{Kromprimeret (zip) mappe}.
     \end{itemize}
   \end{block}
 
   \begin{block}{macOS}
-    I macOS skal man markere de filer og mapper man vil komprimere, derefter højreklikke og trykke
+    Marker filer og mapper, derefter højreklik og tryk
     \begin{itemize}
-    \item \texttt{Kromprimer}.
+    \item \texttt{Komprimer}.
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Linux}
+    Fra kommandolinjen:
+    \begin{itemize}
+    \item \texttt{zip -r output.zip file1 file2 dir1 ...}
     \end{itemize}
   \end{block}
 \end{frame}
@@ -153,25 +148,26 @@
   \end{block}
 \end{frame}
 
-\section{Must Know \LaTeX \ \ Kommandoer}
+\section{Must Know \LaTeX-Kommandoer}
 
-\begin{frame}{Must Know \LaTeX \ Kommandoer}{Specielle karakterer}
+\begin{frame}[containsverbatim]{Must Know \LaTeX-Kommandoer}{Specielle tegn}
   \begin{table}[h]
     \centering
     \begin{tabular}[h]{llll}
-      \textbf{Tegn}             & \textbf{Beskrivelse} & \textbf{Eksempel} & \textbf{Resultat}\\ \hline \\[2pt]
-      \texttt{\textbackslash}   & begynd kommando      & \texttt{\textbackslash LaTeX}              & \LaTeX        \\[4pt]
-      \texttt{\{ \}}            & omkrans argumenter   & \texttt{\textbackslash textbf\{fed\}}    & \textbf{fed}  \\[4pt]
-      \texttt{\%}               & kommentar tegn       & \texttt{\% Fix}                            & \% Fix        \\[4pt]
-      \texttt{\$ \$}            & inline matematik     & \texttt{\$\textbackslash frac\{1\}\{2\}\$} & $\frac{1}{2}$ \\[4pt]
-      \texttt{\_}               & subscript            & \texttt{\$x\_i\$}                          & $x_i$         \\[4pt]
-      \texttt{\textasciicircum} & superscript          & \texttt{\$x\textasciicircum 2\$}           & $x^2$
+      \textbf{Tegn} & \textbf{Beskrivelse} & \textbf{Eksempel}    & \textbf{Resultat} \\
+      \hline \\[2pt]
+      \verb!\!      & begynd kommando      & \verb!\LaTeX!        & \LaTeX            \\[4pt]
+      \verb!{ }!    & omkrans argumenter   & \verb!\textbf{fed}!  & \textbf{fed}      \\[4pt]
+      \verb!%!      & \LaTeX-kommentar     & \verb!% Fix!         &                   \\[4pt]
+      \verb!$ $!    & inline matematik     & \verb!$\frac{1}{2}$! & $\frac{1}{2}$     \\[4pt]
+      \verb!_!      & subscript            & \verb!$x_{i}$!       & $x_{i}$           \\[4pt]
+      \verb!^!      & superscript          & \verb!$x^{2}$!       & $x^{2}$
     \end{tabular}
   \end{table}
 \end{frame}
 
-\begin{frame}[containsverbatim]{Must Know \LaTeX \ Kommandoer}{Blokmiljøer}
-  Et blokmiljøe (engelsk: environment) udfører en handling på en blok af kommandoer i modsætning til eksempelvis inline matematik ved brug af \$ \$.
+\begin{frame}[containsverbatim]{Must Know \LaTeX-Kommandoer}{Blokmiljøer}
+  Et \emph{blokmiljø} (engelsk: environment) udfører en handling på flere linjer af tekst, hvor en simpel kommando bruger en lille stump tekst.
   \begin{block}{Form}
 \begin{verbatim}
   \begin{miljø}
@@ -182,9 +178,9 @@
   \end{block}
 \end{frame}
 
-\section{Matematik Specifikt}
+\section{Matematiske Kommandoer}
 
-\begin{frame}[fragile,label = mustknow]{Matematik Specifikt}
+\begin{frame}[containsverbatim,label = mustknow]{Matematiske Kommandoer}
   \begin{block}{Blokmiljøer}
 \begin{verbatim}
  \begin{equation} ... \end{equation}
@@ -196,49 +192,48 @@
 
 \begin{block}{Andet}
 \begin{verbatim}
- \sum_{i = 1}^{n} x_i
- \prod_{i \in \mathcal{I}}p(i)
- \int_{\infty}^{infty} f(x)dx
- \frac{d}{dx}f(x)
+ \sum_{i = 1}^{n} x_{i}
+ \prod_{i \in \mathcal{I}} p(i)
+ \int_{-\infty}^{\infty} f(x) dx
+ \frac{d}{dx} f(x)
 \end{verbatim}
 \end{block}
 
-Se også: \href{https://en.wikibooks.org/wiki/LaTeX/Mathematics}{Wiki - Mathematics}
+Se også: \url{https://en.wikibooks.org/wiki/LaTeX/Mathematics}
 \end{frame}
 
 \section{Opgaver}
 
 \begin{frame}[containsverbatim]{Opgaver}{Opgave 1}
   \begin{itemize}
-  \item Lave en AAU mappestruktur
-  \item Dan en undermappe \texttt{latex-p0}
-  \item Opret filen \texttt{hello\textunderscore world.tex}
-  \item Skriv følgende i filen og compiler dokumentet
+  \item Lav en AAU mappestruktur, f.eks. som vist på slide \ref{dirs}
+  \item Lav en passende undermappe til dette kursus
+  \item Opret her filen \texttt{hello\_world.tex}
+  \item Skriv følgende i filen og kompiler dokumentet:
   \end{itemize}
 
-  \begin{block}{hello\textunderscore world.tex}
+  \begin{block}{hello\_world.tex}
 \begin{verbatim}
   \documentclass[10pt]{article}
   \begin{document}
-   Hello World! I Like Mathematics!
+   Hello World! I $\heartsuit$ Mathematics!
   \end{document}
 \end{verbatim}
-  \end{block}  
+  \end{block}
 
 \end{frame}
 
 \begin{frame}[containsverbatim]{Opgaver}{Opgave 2}
   \begin{itemize}
-  \item Brug linket på slide \ref{mustknow} til at genskabe nedenstående
+  \item Lav en pdf med nedenstående indhold:
+    \footnote{Hjælp kan findes på: \url{https://en.wikibooks.org/wiki/LaTeX/Mathematics}\\}
   \end{itemize}
-  \begin{block}{}
-    \begin{align*} 
-      \pi          &= \frac{O}{D} \\
-      e^{i\pi} + 1 &= 0           \\
-      \frac{\partial^2 u}{\partial t^2} & = c^2 \nabla^2 u \\
-      P_k(x) &= \sum_{i=1}^{k} \frac{f^{(k)}(a)}{k!}(x - a)^k
-    \end{align*}
-  \end{block}
+  \begin{align*}
+    \pi                               & = \frac{O}{D}    \\
+    e^{i\pi} + 1                      & = 0              \\
+    \frac{\partial^2 u}{\partial t^2} & = c^2 \nabla^2 u \\
+    P_k(x)                            & = \sum_{i=1}^{k} \frac{f^{(k)}(a)}{k!}(x - a)^k
+  \end{align*}
 \end{frame}
 
 
