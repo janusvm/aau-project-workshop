@@ -20,34 +20,48 @@
 
 % Main content
 
-\section{Opdeling af Projekt Filer}
+\section{Opdeling af Projektfiler}
 
-\begin{frame}[containsverbatim]{Opdeling Projekt Filer}{Mappe Struktur}
-  \begin{tikzpicture}%
-  \draw[color=black!60!white]
-  \FTdir(\FTroot,root,P1){       % root: parent = \FTroot
-    \FTfile(root,master.tex)
-    \FTfile(root,master.pdf)
-    \FTdir(root,incl,incl){       % normal dir: (parentID, currentID, label)
-      \FTdir(incl,fig,fig) {
-        \FTfile(fig,orienteret\textunderscore graf.pdf)
-      }
-      \FTdir(incl,form,form) {
-        \FTfile(form,forord.tex)
-        \FTfile(form,introduktion.tex)
-      }
-      \FTdir(incl,kap,kap) {
-        \FTfile(kap,kapitel\textunderscore 1.tex)
-      }
-      \FTdir(incl,tab,tab) {
-        \FTfile(tab,opsummerings\textunderscore tabel.tex)
-      }
-      \FTdir(incl,app,app) {
-        \FTfile(app,appendiks\textunderscore A.tex)
-      }
-    }
-  };
-\end{tikzpicture}
+\begin{frame}[containsverbatim]{Opdeling Projektfiler}{Mappestruktur}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{tikzpicture}
+        \draw[color=black!60!white]
+        \FTdir(\FTroot,root,P1){
+          \FTfile(root,master.tex)
+          \FTfile(root,master.pdf)
+          \FTdir(root,incl,incl){
+            \FTdir(incl,main,main) {
+              \FTfile(main,graph\_theory.tex)
+            }
+            \FTdir(incl,misc,misc) {
+              \FTfile(misc,preface.tex)
+              \FTfile(misc,introduction.tex)
+            }
+            \FTdir(incl,app,app) {
+              \FTfile(app,notation.tex)
+            }
+          }
+          \FTdir(root,fig,fig) {
+            \FTdir(fig,img,img){
+              \FTfile(img,digraph.pdf)
+            }
+            \FTdir(fig,tab,tab) {
+              \FTfile(tab,summary\_table.tex)
+            }
+          }
+        };
+      \end{tikzpicture}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{block}{}
+        Eksempel på dele af en mappestruktur for et P1-projekt.
+      \end{block}
+      \begin{block}{}
+        Forskellige typer af indhold ligger i forskellige undermapper.
+      \end{block}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \begin{frame}[containsverbatim]{Opdeling af Projekt Filer}{Inkluder Filer i Masteren}
