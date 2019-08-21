@@ -22,14 +22,14 @@
 
 \section{BibTeX}
 
-\begin{frame}[containsverbatim]{BibTeX}{\texttt{.bib} fil}
+\begin{frame}[containsverbatim]{BibTeX}{\texttt{.bib}-fil}
   \begin{itemize}
-  \item BibTeX er et modul til \LaTeX \ til brug af kildehenvisning
-  \item Alle kilder findes i en enkelt \texttt{.bib} fil
+  \item BibTeX er et modul til \LaTeX\ til at lave kildehenvisninger
+  \item Kilder skrives ind i en eller flere \texttt{.bib}-filer
   \item Let at referere fra alle steder i dokumentet
   \end{itemize}
 
-  \begin{block}{incl/bib/kilder.bib}
+  \begin{block}{incl/bib/references.bib}
 \begin{verbatim}
 @Book{calc,
   author    = {C. Henry Edwards and David E. Penney},
@@ -43,33 +43,26 @@
 \end{frame}
 
 \begin{frame}[containsverbatim]{BibTeX}{Henvisninger}
-
   \begin{block}{master.tex}
 \begin{verbatim}
-\begin{document}
-
-\include{preamble.tex}
-\include{incl/form/forord.tex}
-\include{incl/form/introduktion.tex}
-....
+...
 \bibliographystyle{apalike}
-\bibliography{incl/bib/kilder.bib}
+\bibliography{incl/bib/references.bib}
 \end{document}
 \end{verbatim}
   \end{block}
 
-  Vi kan nu referere til calculus bogen ved at skrive
+  Vi kan nu referere til calculus-bogen ved at skrive
   \begin{itemize}
   \item \texttt{\textbackslash cite\{calc\}} eller \texttt{\textbackslash cite[sidetal]\{calc\}}
   \item \texttt{\textbackslash citep\{calc\}} eller \texttt{\textbackslash citep[sidetal]\{calc\}}
   \end{itemize}
-
 \end{frame}
 
 
-\section{Beamer Præsentationer}
+\section{Beamer-Præsentationer}
 
-\begin{frame}[containsverbatim]{Beamer Præsentationer}{Introduktion}
+\begin{frame}[containsverbatim]{Beamer-Præsentationer}{Introduktion}
 
   \begin{block}{presentation.tex}
 \begin{verbatim}
@@ -89,26 +82,41 @@ Her defineres centrale koncepter.
 \end{frame}
 \end{verbatim}
   \end{block}
+\end{frame}
 
+\section{Forberedelse Til Næste Workshop}
+
+\begin{frame}{Forberedelse Til Næste Workshop}
+  \begin{block}{Næste gang: Git}
+    Vi skal bruge:
+    \begin{itemize}
+    \item GitHub-konto: \url{https://github.com}
+    \item Gratis Pro-opgradering af GitHub-konto for studerende: \url{https://education.github.com/discount_requests/new}
+    \item Git: \url{https://git-scm.com/downloads}
+    \item Git-klient: \url{https://gitahead.com}
+    \end{itemize}
+  \end{block}
 \end{frame}
 
 \section{Opgaver}
 
-\begin{frame}{Opgaver}{Opgave 1-4}
+\begin{frame}[containsverbatim]{Opgaver}{}
   \begin{itemize}
+  \item Lav en beamer-præsentation og undersøg, hvordan man kan ændre temaet for præsentationen.\footnote{
+      \url{https://en.wikibooks.org/wiki/LaTeX/Presentations}
+    }
   \item Brug Google Scholar til at finde BibTeX kode til at referere til `Discrete Mathematics and Its Applications` af Kenneth H. Rosen.
-  \item Lav en beamer præsentation og undersøg hvordan man kan ændre temaet for præsentationen.
-  \item Unersøg hvordan man kan inkludere et frame med en `Agenda`.
-  \item Lav en \texttt{preamble.tex} fil og indsæt relevant indhold. Indsæt specielt den pakke der gør det muligt at producere følgende. (Hint: Se tidligere slides)
+    Indsæt denne i en \texttt{.bib}-fil og inkluder den i præsentationen med \verb!\bibliography!
+  \item Lav et slide med en indholdsfortegnelse
+  \item Lav en \texttt{preamble.tex} fil og indsæt relevant indhold.
+    Indsæt specielt den pakke, der gør det muligt at producere følgende.\footnote{
+      \url{https://en.wikibooks.org/wiki/LaTeX/Mathematics},\\
+      \hspace{3ex} se tabellen i afsnit \emph{Formatting mathematics symbols}
+    }
     \[
       \mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} \subset \mathbb{C}
     \]
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Opgaver}{Opgave 5}
-  \begin{itemize}
-  \item Man kan indsætte såkaldte `blokke` i en beamer frame; undersøg hvordan og prøv det af.
+  \item Indsæt en reference til Rosen-bogen med \verb!\cite!
   \end{itemize}
 \end{frame}
 
