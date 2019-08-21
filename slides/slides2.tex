@@ -166,7 +166,7 @@ l.6 \dtae
 \begin{verbatim}
 \begin{figure}[htbp]
   \centering
-  \includegraphics{fig/img/taylor.pdf}
+  \includegraphics{fig/img/taylor_log.pdf}
   \caption{Taylor approksimation
     af $f(x) = \log(x)$.}
   \label{fig:taylor}
@@ -176,9 +176,9 @@ l.6 \dtae
     \begin{column}{0.4\textwidth}
       \begin{figure}[h]
         \centering
-        \includegraphics[width=\linewidth]{img/taylor.pdf}
+        \includegraphics[width=\linewidth]{img/taylor_log.pdf}
         \caption{Taylor approksimation af $f(x) = \log(x)$.}
-        \label{fig:taylor}
+        \label{fig:taylor_log}
       \end{figure}
     \end{column}
   \end{columns}
@@ -192,16 +192,16 @@ l.6 \dtae
 \begin{table}[htbp]
  \begin{center}
    \begin{tabular}{c|c|c}
-    $n$ & $f^{(n)}(x)$ & $f^{(n)}(0)$\\
+    $n$ & $f^{(n)}(x)$ & $f^{(n)}(1)$\\
     \hline
-    1 & $\log(x)$        &  0 \\
-    2 & $\frac{1}{x}$    &  1 \\
-    3 & $-\frac{1}{x^2}$ & -1 \\
+    0 & $\log(x)$        &  0 \\
+    1 & $\frac{1}{x}$    &  1 \\
+    2 & $-\frac{1}{x^2}$ & -1 \\
     \hline
    \end{tabular}
  \end{center}
  \caption{Taylor}
- \label{tab:taylor_lnx}
+ \label{tab:taylor_log}
 \end{table}
 \end{verbatim}
   \end{column}
@@ -209,15 +209,15 @@ l.6 \dtae
   \begin{table}[h]
   \begin{center}
     \begin{tabular}{c|c|c}
-     $n$ & $f^{(n)}(x)$     & $f^{(n)}(0)$\\\hline
-     1   & $\log(x)$        & 0           \\
-     2   & $\frac{1}{x}$    & 1           \\
-     3   & $-\frac{1}{x^2}$ & -1          \\
+     $n$ & $f^{(n)}(x)$     & $f^{(n)}(1)$\\\hline
+     0   & $\log(x)$        & 0           \\
+     1   & $\frac{1}{x}$    & 1           \\
+     2   & $-\frac{1}{x^2}$ & -1          \\
       \hline
     \end{tabular}
   \end{center}
   \caption{Evaluering af $f$ og de afledte i $a=1$.}
-  \label{tab:taylor_lnx}
+  \label{tab:taylor_log}
 \end{table}
 \end{column}
 \end{columns}
@@ -272,8 +272,8 @@ l.6 \dtae
 \section{Krydsreferencer}
 \label{krydsrefs}
 
-Se Tabel \ref{tab:taylor_lnx}
-og Figur \ref{fig:taylor}.
+Se Tabel \ref{tab:taylor_log}
+og Figur \ref{fig:taylor_log}.
 
 Betragt følgende:
 \begin{equation}
@@ -287,8 +287,8 @@ i 1800-tallet.
 \end{verbatim}
     \end{column}
     \begin{column}{0.4\textwidth}
-      Se Tabel \ref{tab:taylor_lnx}
-      og Figur \ref{fig:taylor}.
+      Se Tabel \ref{tab:taylor_log}
+      og Figur \ref{fig:taylor_log}.
 
       Betragt følgende:
       \begin{equation} \label{eq:1}
@@ -307,10 +307,10 @@ i 1800-tallet.
 \begin{frame}[containsverbatim]{Opgaver}{Opgave 1}
   \begin{columns}
     \begin{column}{0.5\textwidth}
-      Lav et \LaTeX-dokument, hvori I opskriver en Taylor-udvikling for \(e^{x}\), inkluderer et billede som figur, og opskriver en tabel over værdier for \(n = 1, 2, 3\).
+      Lav et \LaTeX-dokument, hvori I opskriver en 2.\ ordens Taylor-udvikling for funktionen \(e^{2x}\), inkluderer et billede som figur, og opskriver en tabel over værdier for \(n = 0, 1, 2\).
       \begin{itemize}
       \item Lav en undermappe i mappen for dette kursus med strukturen vist til højre:
-      \item Hent \texttt{fig/img/taylor.pdf}\footnotemark[1]
+      \item Hent \texttt{fig/img/taylor\_exp.pdf}\footnotemark[1]
       \item Udfyld de tre \texttt{.tex} filer med relevant indhold
       \end{itemize}
     \end{column}
@@ -327,10 +327,10 @@ i 1800-tallet.
           }
           \FTdir(root,fig,fig) {
             \FTdir(fig,img,img) {
-              \FTfile(img,taylor.pdf)
+              \FTfile(img,taylor\_exp.pdf)
             }
             \FTdir(fig,tab,tab) {
-              \FTfile(tab,taylor\_vals.tex)
+              \FTfile(tab,taylor\_exp.tex)
             }
           }
         };
