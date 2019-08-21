@@ -305,30 +305,39 @@ i 1800-tallet.
 \section{Opgaver}
 
 \begin{frame}[containsverbatim]{Opgaver}{Opgave 1}
-  \begin{itemize}
-  \item Lav en mappe struktur tilsvarende nedenstående
-  \item Udfyld de fire \texttt{.tex} filer med relevant indhold
-  \item Download filen \texttt{taylor\textunderscore graf.pdf}
-  \item Inkluder \texttt{taylor\textunderscore graf.pdf} i \texttt{taylor\textunderscore tabel.tex}
-  \end{itemize}
-  \begin{tikzpicture}%
-  \draw[color=black!60!white]
-  \FTdir(\FTroot,root,opgave){       % root: parent = \FTroot
-    \FTfile(root,master.tex)
-    \FTfile(root,master.pdf)
-    \FTdir(root,incl,incl){       % normal dir: (parentID, currentID, label)
-      \FTdir(incl,fig,fig) {
-        \FTfile(fig,taylor\textunderscore graf.pdf)
-      }
-      \FTdir(incl,kap,kap) {
-        \FTfile(kap,taylor.tex)
-      }
-      \FTdir(incl,tab,tab) {
-        \FTfile(tab,taylor\textunderscore tabel.tex)
-      }
-    }
-  };
-\end{tikzpicture}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      Lav et \LaTeX-dokument, hvori I opskriver en Taylor-udvikling for \(e^{x}\), inkluderer et billede som figur, og opskriver en tabel over værdier for \(n = 1, 2, 3\).
+      \begin{itemize}
+      \item Lav en undermappe i mappen for dette kursus med strukturen vist til højre:
+      \item Hent \texttt{fig/img/taylor.pdf}\footnotemark[1]
+      \item Udfyld de tre \texttt{.tex} filer med relevant indhold
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{tikzpicture}
+        \draw[color=black!60!white]
+        \FTdir(\FTroot,root,opgave){
+          \FTfile(root,master.tex)
+          \FTfile(root,master.pdf)
+          \FTdir(root,incl,incl){
+            \FTdir(incl,main,main) {
+              \FTfile(main,taylor.tex)
+            }
+          }
+          \FTdir(root,fig,fig) {
+            \FTdir(fig,img,img) {
+              \FTfile(img,taylor.pdf)
+            }
+            \FTdir(fig,tab,tab) {
+              \FTfile(tab,taylor\_vals.tex)
+            }
+          }
+        };
+      \end{tikzpicture}
+    \end{column}
+  \end{columns}
+  \footnotetext[1]{Hvorhenne kan de hente denne fil?}
 \end{frame}
 
 \end{document}
