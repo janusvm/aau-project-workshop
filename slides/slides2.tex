@@ -64,42 +64,43 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}[containsverbatim]{Opdeling af Projekt Filer}{Inkluder Filer i Masteren}
+\begin{frame}[containsverbatim]{Opdeling af Projektfiler}{Inkluder Filer i Masteren}
   \begin{block}{master.tex}
 \begin{verbatim}
   \documentclass[10pt]{report}
   \begin{document}
-  \include{incl/form/forord}
-  \include{incl/form/introduktion}
-  \include{incl/kap/kapitel_1}
-  \include{incl/app/appendiks_A}
+  \include{incl/misc/preface}
+  \include{incl/misc/introduction}
+  \include{incl/main/graph_theory}
+  \appendix
+  \include{incl/app/notation}
   \end{document}
 \end{verbatim}
   \end{block}
 
-  \begin{block}{kapitel\textunderscore 1.tex}
+  \begin{block}{graph\_theory.tex}
 \begin{verbatim}
-\chapter{Kapitel 1}
+\chapter{Grafteori}
 Dette kapitel omhandler...
-\input{incl/tab/opsummerings_tabel.tex}
+\input{fig/tab/summary_table.tex}
 \end{verbatim}
   \end{block}
 \end{frame}
 
-\begin{frame}[containsverbatim]{Opdeling af Projekt Filer}{Preamble}
+\begin{frame}[containsverbatim]{Opdeling af Projektfiler}{Preamble}
   \begin{block}{preamble.tex}
 \begin{verbatim}
-\documentclass[10pt]{report}             % Type mm.
-\usepackage[utf8]{inputenc}              % DK bogstaver ind
-\usepackage[T1]{fontenc}                 % DK bogstaver ud
-\usepackage[danish]{babel}               % DK formattering
-\includepackage{amssymb, mathtools}      % Matematik
-\includepackage{graphicx}                % \includegraphics
+\usepackage[utf8]{inputenc}           % DK bogstaver ind
+\usepackage[T1]{fontenc}              % DK bogstaver ud
+\usepackage[danish]{babel}            % DK formattering
+\usepackage{mathtools,amssymb}        % Matematik
+\usepackage{graphicx}                 % Billedfil-support
 \end{verbatim}
   \end{block}
     \begin{block}{master.tex}
 \begin{verbatim}
-\include{preable.tex}
+\documentclass[10pt]{report}
+\input{preamble.tex}
 \begin{document}
 ...
 \end{document}
