@@ -64,42 +64,43 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}[containsverbatim]{Opdeling af Projekt Filer}{Inkluder Filer i Masteren}
+\begin{frame}[containsverbatim]{Opdeling af Projektfiler}{Inkluder Filer i Masteren}
   \begin{block}{master.tex}
 \begin{verbatim}
   \documentclass[10pt]{report}
   \begin{document}
-  \include{incl/form/forord}
-  \include{incl/form/introduktion}
-  \include{incl/kap/kapitel_1}
-  \include{incl/app/appendiks_A}
+  \include{incl/misc/preface}
+  \include{incl/misc/introduction}
+  \include{incl/main/graph_theory}
+  \appendix
+  \include{incl/app/notation}
   \end{document}
 \end{verbatim}
   \end{block}
 
-  \begin{block}{kapitel\textunderscore 1.tex}
+  \begin{block}{graph\_theory.tex}
 \begin{verbatim}
-\chapter{Kapitel 1}
+\chapter{Grafteori}
 Dette kapitel omhandler...
-\input{incl/tab/opsummerings_tabel.tex}
+\input{fig/tab/summary_table.tex}
 \end{verbatim}
   \end{block}
 \end{frame}
 
-\begin{frame}[containsverbatim]{Opdeling af Projekt Filer}{Preamble}
+\begin{frame}[containsverbatim]{Opdeling af Projektfiler}{Preamble}
   \begin{block}{preamble.tex}
 \begin{verbatim}
-\documentclass[10pt]{report}             % Type mm.
-\usepackage[utf8]{inputenc}              % DK bogstaver ind
-\usepackage[T1]{fontenc}                 % DK bogstaver ud
-\usepackage[danish]{babel}               % DK formattering
-\includepackage{amssymb, mathtools}      % Matematik
-\includepackage{graphicx}                % \includegraphics
+\usepackage[utf8]{inputenc}           % DK bogstaver ind
+\usepackage[T1]{fontenc}              % DK bogstaver ud
+\usepackage[danish]{babel}            % DK formattering
+\usepackage{mathtools,amssymb}        % Matematik
+\usepackage{graphicx}                 % Billedfil-support
 \end{verbatim}
   \end{block}
     \begin{block}{master.tex}
 \begin{verbatim}
-\include{preable.tex}
+\documentclass[10pt]{report}
+\input{preamble.tex}
 \begin{document}
 ...
 \end{document}
@@ -111,10 +112,11 @@ Dette kapitel omhandler...
 
 \begin{frame}[containsverbatim]{Fejlmeddelelser}{Typer}
   \begin{itemize}
-  \item \LaTeX giver fejl hvis en kommando er skrevet forkert
+  \item \LaTeX\ giver fejl hvis en kommando er skrevet forkert
   \item Det sker \textbf{hele tiden for os alle}
-  \item Man skal derfor vide hvordan man retter fejl
+  \item Man skal derfor vide, hvordan man retter fejl
   \item En fejlmeddelelse starter altid med et udråbstegn
+  \item Editors som TeXMaker samler fejlmeddelelser fra log-filen
   \item Brug Google - andre har helt sikkert haft den samme fejl
   \end{itemize}
 
@@ -131,9 +133,9 @@ l.6 \dtae
 
 \begin{frame}[containsverbatim]{Fejlmeddelelser}{Strategi}
   \begin{itemize}
-  \item Mange fejl kan fanges ved at compile ofte
-  \item Nogle gange ved man ikke hvor i dokumentet fejlen er
-  \item Brug evt. udelukkelses metoden her - udkommenter indtil det virker igen
+  \item Mange fejl kan fanges ved at kompilere ofte
+  \item Nogle gange ved man ikke, hvor i dokumentet fejlen er
+  \item Brug evt. udelukkelsesmetoden her---udkommenter indtil det virker igen, så ved du, at fejlen er i den udkommenterede del af koden
   \end{itemize}
 \end{frame}
 
@@ -159,51 +161,47 @@ l.6 \dtae
 \end{frame}
 
 \begin{frame}[containsverbatim]{Floats og Andre Blokmiljøer}{Figurer}
-
-\begin{columns}
-  \begin{column}{0.6\textwidth}
-    \begin{verbatim}
-\begin{figure}[h] % options: h, t, b
- \centering
- \includegraphics{sti-til/taylor.pdf}
- \caption{Taylor.}
- \label{fig:taylor}
+  \begin{columns}
+    \begin{column}{0.6\textwidth}
+\begin{verbatim}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics{fig/img/taylor_log.pdf}
+  \caption{Taylor approksimation
+    af $f(x) = \log(x)$.}
+  \label{fig:taylor}
 \end{figure}
 \end{verbatim}
-  \end{column}
-  \begin{column}{0.4\textwidth}
-\begin{figure}[h] % options: h, t, b
- \centering
- \includegraphics[scale=0.25]{img/taylor.pdf}
- \caption{Taylor approksimation af $f(x) = \log(x)$.}
- \label{fig:taylor}
-\end{figure}
-  \end{column}
-\end{columns}
-
-
-
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \begin{figure}[h]
+        \centering
+        \includegraphics[width=\linewidth]{img/taylor_log.pdf}
+        \caption{Taylor approksimation af $f(x) = \log(x)$.}
+        \label{fig:taylor_log}
+      \end{figure}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 
 \begin{frame}[containsverbatim]{Floats og Andre Blokmiljøer}{Tabeller}
-
 \begin{columns}
   \begin{column}{0.6\textwidth}
     \begin{verbatim}
-\begin{table}[h]
+\begin{table}[htbp]
  \begin{center}
    \begin{tabular}{c|c|c}
-    $n$ & $f^{(n)}(x)$ & $f^{(n)}(0)$\\
+    $n$ & $f^{(n)}(x)$ & $f^{(n)}(1)$\\
     \hline
-    1 & $\log(x)$        & 0  \\[2pt]
-    2 & $\frac{1}{x}$    & 1  \\[2pt]
-    3 & $-\frac{1}{x^2}$ & -1 \\[2pt]
+    0 & $\log(x)$        &  0 \\
+    1 & $\frac{1}{x}$    &  1 \\
+    2 & $-\frac{1}{x^2}$ & -1 \\
     \hline
    \end{tabular}
  \end{center}
  \caption{Taylor}
- \label{tab:taylor_lnx}
+ \label{tab:taylor_log}
 \end{table}
 \end{verbatim}
   \end{column}
@@ -211,15 +209,15 @@ l.6 \dtae
   \begin{table}[h]
   \begin{center}
     \begin{tabular}{c|c|c}
-     $n$ & $f^{(n)}(x)$     & $f^{(n)}(0)$\\\hline
-     1   & $\log(x)$        & 0           \\[2pt]
-     2   & $\frac{1}{x}$    & 1           \\[2pt]
-     3   & $-\frac{1}{x^2}$ & -1          \\[2pt]
+     $n$ & $f^{(n)}(x)$     & $f^{(n)}(1)$\\\hline
+     0   & $\log(x)$        & 0           \\
+     1   & $\frac{1}{x}$    & 1           \\
+     2   & $-\frac{1}{x^2}$ & -1          \\
       \hline
     \end{tabular}
   \end{center}
   \caption{Evaluering af $f$ og de afledte i $a=1$.}
-  \label{tab:taylor_lnx}
+  \label{tab:taylor_log}
 \end{table}
 \end{column}
 \end{columns}
@@ -227,111 +225,119 @@ l.6 \dtae
 
 
 \begin{frame}[containsverbatim]{Floats og Andre Blokmiljøer}{Andre Blokmiljøer}
-
-\begin{columns}
-  \begin{column}{0.6\textwidth}
-  \begin{block}{Ikke-ordnede lister}
+  \begin{columns}
+    \begin{column}{0.6\textwidth}
+      \begin{block}{Ikke-ordnede lister}
 \begin{verbatim}
 \begin{itemize}
- \item $\alpha$
- \item $\beta$
- \item $\zeta$
+\item $\alpha$
+\item $\beta$
+\item $\zeta$
 \end{itemize}
 \end{verbatim}
-  \end{block}
-  \begin{block}{Ordnede lister}
+      \end{block}
+      \begin{block}{Ordnede lister}
 \begin{verbatim}
 \begin{enumerate}
- \item $\delta$
- \item $\epsilon$
- \item $\phi$
+\item $\delta$
+\item $\epsilon$
+\item $\phi$
 \end{enumerate}
 \end{verbatim}
-  \end{block}
-  \end{column}
-  \begin{column}{0.4\textwidth}
-  \begin{block}{}
-\begin{itemize}
- \item $\alpha$
- \item $\beta$
- \item $\zeta$
-\end{itemize}
-  \end{block}
-  \begin{block}{}
-\begin{enumerate}
- \item $\delta$
- \item $\epsilon$
- \item $\phi$
-\end{enumerate}
-  \end{block}
-  \end{column}
-\end{columns}
+      \end{block}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \begin{block}{}
+        \begin{itemize}
+        \item $\alpha$
+        \item $\beta$
+        \item $\zeta$
+        \end{itemize}
+      \end{block}
+      \begin{block}{}
+        \begin{enumerate}
+        \item $\delta$
+        \item $\epsilon$
+        \item $\phi$
+        \end{enumerate}
+      \end{block}
+    \end{column}
+  \end{columns}
 \end{frame}
 
-\begin{frame}[containsverbatim]{Floats og Andre Blokmiljøer}{Krydsreference}
-\begin{columns}
-  \begin{column}{0.6\textwidth}
-    \begin{verbatim}
+\begin{frame}[containsverbatim]{Floats og Andre Blokmiljøer}{Krydsreferencer}
+  \begin{columns}
+    \begin{column}{0.6\textwidth}
+\begin{verbatim}
 \section{Krydsreferencer}
 \label{krydsrefs}
 
-Se table \ref{tab:taylor_lnx}
-og figur \ref{fig:taylor}.
+Se Tabel \ref{tab:taylor_log}
+og Figur \ref{fig:taylor_log}.
 
-Betragt følgende
-\begin{equation} \label{eq:1}
-\sum_{k=0}^{n} k = \frac{n(n+1)^2}{2}
+Betragt følgende:
+\begin{equation}
+  \label{eq:1}
+  \sum_{k=0}^{n} k =
+    \frac{n(n+1)^2}{2} .
 \end{equation}
 
-Ligning \eqref{eq:1} blev opdaget
-af Gauss i 1800 tallet.
+Gauss opdagede \eqref{eq:1}
+i 1800-tallet.
 \end{verbatim}
-  \end{column}
-  \begin{column}{0.4\textwidth}
-    Se tabel \ref{tab:taylor_lnx}
-    og figur \ref{fig:taylor}.
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      Se Tabel \ref{tab:taylor_log}
+      og Figur \ref{fig:taylor_log}.
 
-    \vspace{25pt}
+      Betragt følgende:
+      \begin{equation} \label{eq:1}
+        \sum_{k=0}^{n} k = \frac{n(n+1)^2}{2} .
+      \end{equation}
 
-    Betragt følgende
-    \begin{equation} \label{eq:1}
-      \sum_{k=0}^{n} k = \frac{n(n+1)^2}{2}
-    \end{equation}
-
-    Ligning \eqref{eq:1} blev opdaget
-    af Gauss i 1800 tallet.
-\end{column}
-\end{columns}
+      Gauss opdagede \eqref{eq:1}
+      i 1800-tallet.
+    \end{column}
+  \end{columns}
 \end{frame}
 
 
 \section{Opgaver}
 
 \begin{frame}[containsverbatim]{Opgaver}{Opgave 1}
-  \begin{itemize}
-  \item Lav en mappe struktur tilsvarende nedenstående
-  \item Udfyld de fire \texttt{.tex} filer med relevant indhold
-  \item Download filen \texttt{taylor\textunderscore graf.pdf}
-  \item Inkluder \texttt{taylor\textunderscore graf.pdf} i \texttt{taylor\textunderscore tabel.tex}
-  \end{itemize}
-  \begin{tikzpicture}%
-  \draw[color=black!60!white]
-  \FTdir(\FTroot,root,opgave){       % root: parent = \FTroot
-    \FTfile(root,master.tex)
-    \FTfile(root,master.pdf)
-    \FTdir(root,incl,incl){       % normal dir: (parentID, currentID, label)
-      \FTdir(incl,fig,fig) {
-        \FTfile(fig,taylor\textunderscore graf.pdf)
-      }
-      \FTdir(incl,kap,kap) {
-        \FTfile(kap,taylor.tex)
-      }
-      \FTdir(incl,tab,tab) {
-        \FTfile(tab,taylor\textunderscore tabel.tex)
-      }
-    }
-  };
-\end{tikzpicture}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      Lav et \LaTeX-dokument, hvori I opskriver en 2.\ ordens Taylor-udvikling for \(f(x) = e^{2x}\), inkluderer et billede som figur, og opskriver en tabel over værdier for \(n = 0, 1, 2\).
+      \begin{itemize}
+      \item Lav en undermappe i mappen for dette kursus med strukturen vist til højre:
+      \item Hent \texttt{fig/img/taylor\_exp.pdf}\footnotemark[1]
+      \item Udfyld de tre \texttt{.tex} filer med relevant indhold
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{tikzpicture}
+        \draw[color=black!60!white]
+        \FTdir(\FTroot,root,opgave){
+          \FTfile(root,master.tex)
+          \FTfile(root,master.pdf)
+          \FTdir(root,incl,incl){
+            \FTdir(incl,main,main) {
+              \FTfile(main,taylor.tex)
+            }
+          }
+          \FTdir(root,fig,fig) {
+            \FTdir(fig,img,img) {
+              \FTfile(img,taylor\_exp.pdf)
+            }
+            \FTdir(fig,tab,tab) {
+              \FTfile(tab,taylor\_exp.tex)
+            }
+          }
+        };
+      \end{tikzpicture}
+    \end{column}
+  \end{columns}
+  \footnotetext[1]{\url{https://github.com/janusvm/aau-project-workshop/blob/master/slides/img/taylor_exp.pdf}}
 \end{frame}
 
 \end{document}
