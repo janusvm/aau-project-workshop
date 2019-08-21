@@ -54,7 +54,7 @@
 \end{frame}
 
 \section{Mappestruktur og Filtyper}
-\begin{frame}[containsverbatim]{Mappestruktur og Filtyper}{Mappestruktur}
+\begin{frame}[containsverbatim,label=dirs]{Mappestruktur og Filtyper}{Mappestruktur}
   Det er en god ide at have en ordnet mappestruktur på sin computer.
   \begin{tikzpicture}
     \draw[color=black!60!white]
@@ -206,35 +206,34 @@ Se også: \url{https://en.wikibooks.org/wiki/LaTeX/Mathematics}
 
 \begin{frame}[containsverbatim]{Opgaver}{Opgave 1}
   \begin{itemize}
-  \item Lave en AAU mappestruktur
-  \item Dan en undermappe \texttt{latex-p0}
-  \item Opret filen \texttt{hello\textunderscore world.tex}
-  \item Skriv følgende i filen og compiler dokumentet
+  \item Lav en AAU mappestruktur, f.eks. som vist på slide \ref{dirs}
+  \item Lav en passende undermappe til dette kursus
+  \item Opret her filen \texttt{hello\_world.tex}
+  \item Skriv følgende i filen og kompiler dokumentet:
   \end{itemize}
 
-  \begin{block}{hello\textunderscore world.tex}
+  \begin{block}{hello\_world.tex}
 \begin{verbatim}
   \documentclass[10pt]{article}
   \begin{document}
-   Hello World! I Like Mathematics!
+   Hello World! I $\heartsuit$ Mathematics!
   \end{document}
 \end{verbatim}
-  \end{block}  
+  \end{block}
 
 \end{frame}
 
 \begin{frame}[containsverbatim]{Opgaver}{Opgave 2}
   \begin{itemize}
-  \item Brug linket på slide \ref{mustknow} til at genskabe nedenstående
+  \item Lav en pdf med nedenstående indhold:
+    \footnote{Hjælp kan findes på: \url{https://en.wikibooks.org/wiki/LaTeX/Mathematics}\\}
   \end{itemize}
-  \begin{block}{}
-    \begin{align*} 
-      \pi          &= \frac{O}{D} \\
-      e^{i\pi} + 1 &= 0           \\
-      \frac{\partial^2 u}{\partial t^2} & = c^2 \nabla^2 u \\
-      P_k(x) &= \sum_{i=1}^{k} \frac{f^{(k)}(a)}{k!}(x - a)^k
-    \end{align*}
-  \end{block}
+  \begin{align*}
+    \pi                               & = \frac{O}{D}    \\
+    e^{i\pi} + 1                      & = 0              \\
+    \frac{\partial^2 u}{\partial t^2} & = c^2 \nabla^2 u \\
+    P_k(x)                            & = \sum_{i=1}^{k} \frac{f^{(k)}(a)}{k!}(x - a)^k
+  \end{align*}
 \end{frame}
 
 
